@@ -7,7 +7,11 @@ USE sakila;
 
 -- List the number of films per category.
 
-select name, COUNT(*) from sakila.category group by name;
+select C.name, COUNT(*) AS films_quantity
+	from sakila.category as C 
+join sakila.film_category AS FC 
+	on C.category_id = fc.category_id 
+group by C.name;
 
 -- Retrieve the store ID, city, and country for each store.
 
